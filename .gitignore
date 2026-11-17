@@ -1,0 +1,28 @@
+# Public repository ignores
+node_modules/
+.next/
+out/
+build/
+coverage/
+*.log
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.vercel/
+.DS_Store
+*.pem
+
+# Local and session tooling
+.claude/
+knowledge/
+docs/
+_backup/
+parser-2gis.exe
+*-autoservice*.json
+components.json
+.mcp.json
+.npmrc
+CLAUDE.md
+PROJECT_BLUEPRINT.md
+skills-lock.json

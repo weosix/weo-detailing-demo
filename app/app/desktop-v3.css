@@ -1,0 +1,472 @@
+/* ------------------------------------------------------------------
+   Desktop v3: типографика, читаемость и доверие.
+   Все правила — только desktop-разметка (.desktop-* / .booking-*)
+   или media >= 900px. Мобильная версия и кабинет не затрагиваются.
+
+   Типографическая шкала (минимум для desktop):
+   подпись-надзаголовок 14px, текст 16px, служебный 13px.
+   Ниже 13px на desktop не опускаемся — 11px с капителью читается как шум.
+   ------------------------------------------------------------------ */
+
+@media (min-width: 900px) {
+  .desktop-home {
+    --type-muted: #9aa6b1;
+    --type-soft: #b6c1cb;
+    --rule: #232a31;
+    --gap-section: clamp(64px, 7vw, 108px);
+  }
+
+  /* --- Надзаголовки: было 11px капителью, стало 14px обычного регистра --- */
+  .desktop-home .desktop-copy > small,
+  .desktop-home .desktop-section-title > small,
+  .desktop-home .desktop-process > div > small,
+  .desktop-home .desktop-local-head small,
+  .desktop-home .desktop-submitted small {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: #8fb2ce !important;
+    font-size: 14px !important;
+    font-weight: 550 !important;
+    letter-spacing: .01em !important;
+    text-transform: none !important;
+  }
+
+  /* --- Основной текст: 18px с межстрочным 1.6, длина строки до 62 символов --- */
+  .desktop-home .desktop-copy p,
+  .desktop-home .desktop-section-title p,
+  .desktop-home .desktop-submitted p {
+    max-width: 54ch;
+    color: var(--type-soft) !important;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+  }
+
+  .desktop-home .desktop-section-title p {
+    font-size: 17px !important;
+    color: var(--type-muted) !important;
+  }
+
+  /* --- Факты в hero --- */
+  .desktop-home .desktop-facts dt { font-size: 13px; color: #8794a0; }
+  .desktop-home .desktop-facts dd { font-size: 16px; }
+
+  /* --- Прайс --- */
+  .desktop-home .desktop-services .service-grid article > h3 {
+    font-size: 20px !important;
+    line-height: 1.25;
+  }
+  .desktop-home .desktop-services .service-grid article > p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #98a3ad !important;
+  }
+  .desktop-home .desktop-services .service-grid article > b { font-size: 17px !important; }
+  .desktop-home .desktop-services .service-grid article > button {
+    font-size: 15px !important;
+    min-height: 40px;
+    padding: 0 2px;
+  }
+  .desktop-home .desktop-services .service-grid article > i { font-size: 22px; }
+
+  /* Название студии над заголовком вместо безымянного «Детейлинг в Москве». */
+  .desktop-home .desktop-studioname {
+    display: block;
+    margin-bottom: 18px;
+    color: #e8eef3;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+  }
+  .desktop-home .desktop-studio-place {
+    color: #8fb2ce;
+    font-weight: 550;
+  }
+
+  /* --- Процесс --- */
+  .desktop-home .desktop-process .process-grid > li > b { font-size: 14px !important; }
+  .desktop-home .desktop-process .process-grid > li > strong { font-size: 17px !important; }
+  .desktop-home .desktop-process .process-grid > li > p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+
+  /* --- Преимущества и отзывы --- */
+  .desktop-home .desktop-benefits p,
+  .desktop-home .desktop-benefits li {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+  .desktop-home .desktop-local-head h2 { font-size: 30px !important; }
+  .desktop-home .demo-review-label { font-size: 13px !important; }
+  .desktop-home .desktop-review-grid article > p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+  .desktop-home .desktop-review-grid article > footer b { font-size: 14px !important; }
+  .desktop-home .desktop-review-grid article > footer small { font-size: 13px !important; }
+
+  /* --- Шапка и футер --- */
+  .desktop-home .desktop-header nav a { font-size: 15px; }
+  .desktop-home .desktop-brand b { font-size: 21px; }
+  .desktop-home .desktop-header > button { font-size: 14px; }
+  .desktop-home .desktop-footer { font-size: 14px; }
+  .desktop-home .desktop-footer > span { line-height: 1.6; color: #93a0ab; }
+
+  /* --- Диалог заявки: подписи полей 14px вместо 12px --- */
+  .modal-backdrop .booking-modal label {
+    font-size: 14px !important;
+    color: #c2ccd4 !important;
+  }
+  .modal-backdrop .booking-modal input,
+  .modal-backdrop .booking-modal select { font-size: 16px !important; }
+  .modal-backdrop .booking-modal > p:not(.booking-selected) {
+    font-size: 15px !important;
+    color: #a3aeb7 !important;
+  }
+  .modal-backdrop .booking-modal .booking-selected { font-size: 15px !important; }
+  .modal-backdrop .booking-modal .booking-consent { font-size: 14px !important; line-height: 1.5 !important; }
+  .modal-backdrop .booking-modal .booking-hint { font-size: 13px !important; }
+  .modal-backdrop .booking-modal .field-error { font-size: 13px !important; }
+  .modal-backdrop .booking-modal > button[type="submit"] { font-size: 16px !important; }
+
+  /* --- Ритм секций: одинаковые отступы вместо случайных 30/34/70 --- */
+  .desktop-home .desktop-services,
+  .desktop-home .desktop-process,
+  .desktop-home .desktop-local-proof,
+  .desktop-home .desktop-reviews {
+    padding-top: var(--gap-section) !important;
+    padding-bottom: var(--gap-section) !important;
+  }
+  .desktop-home .desktop-local-proof,
+  .desktop-home .desktop-reviews { padding-top: 40px !important; }
+  .desktop-home .desktop-reviews { padding-bottom: 56px !important; }
+
+  /* Разделитель уже есть у карточки — верхняя линия секции только двоит её. */
+  .desktop-home .desktop-local-proof {
+    padding-top: 0 !important;
+    border-top: 0 !important;
+  }
+  .desktop-home .desktop-local-proof > .desktop-proof-card { margin-top: var(--gap-section); }
+
+  /* --- Кнопки hero: 48px высоты и чёткий контраст --- */
+  .desktop-home .desktop-actions button {
+    min-height: 52px;
+    padding: 0 26px;
+    font-size: 16px;
+  }
+  .desktop-home .desktop-actions a { font-size: 17px; }
+
+  /* --- Фото hero: убираем двойное затемнение (было .7 brightness + свой градиент) --- */
+  .desktop-home .desktop-art > .hero-car-photo {
+    opacity: 1 !important;
+    filter: saturate(.85) contrast(1.05) brightness(.92) !important;
+  }
+  .desktop-home .desktop-art::after {
+    background: linear-gradient(180deg, rgba(5, 9, 14, .12), rgba(5, 9, 14, .06) 42%, rgba(5, 9, 14, .82)) !important;
+  }
+  .desktop-home .desktop-art > .art-footer span { font-size: 13px !important; }
+
+  /* --- Видимый фокус на тёмном фоне (был 2px #78add3 при контрасте ниже 3:1) --- */
+  .desktop-home button:focus-visible,
+  .desktop-home a:focus-visible,
+  .modal-backdrop button:focus-visible,
+  .modal-backdrop a:focus-visible,
+  .modal-backdrop input:focus-visible,
+  .modal-backdrop select:focus-visible {
+    outline: 3px solid #9fcbf0 !important;
+    outline-offset: 3px !important;
+    border-radius: 6px;
+  }
+
+  /* --- Скип-ссылка для клавиатуры --- */
+  .skip-link {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    z-index: 3000;
+    transform: translate(-50%, -160%);
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #f2f6f8;
+    color: #07131d;
+    font-size: 15px;
+    font-weight: 650;
+    text-decoration: none;
+    transition: transform .15s ease;
+  }
+  .skip-link:focus-visible { transform: translate(-50%, 0); }
+}
+
+/* --- Планшет: не даём прайсу схлопнуться в две узкие колонки --- */
+@media (min-width: 900px) and (max-width: 1180px) {
+  .desktop-home .desktop-services .service-grid { grid-template-columns: 1fr !important; }
+  .desktop-home .desktop-copy p { font-size: 17px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link { transition: none; }
+}
+
+/* --- Футер: три колонки с заголовками вместо строки из четырёх span --- */
+@media (min-width: 900px) {
+  .desktop-home .desktop-footer {
+    display: grid !important;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 32px 48px;
+    align-items: start;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .desktop-home .desktop-footer-col { display: grid; gap: 6px; }
+  .desktop-home .desktop-footer-col h3 {
+    margin: 0 0 8px;
+    color: #d6dee5;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .desktop-home .desktop-footer-col p { margin: 0; color: #93a0ab; font-size: 15px; line-height: 1.6; }
+  .desktop-home .desktop-footer-note { color: #78848f !important; font-size: 14px !important; }
+  .desktop-home .desktop-footer-col a {
+    color: #b6d5eb;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .desktop-home .desktop-footer-col a:hover,
+  .desktop-home .desktop-footer-col a:focus-visible {
+    color: #eaf4fb;
+    border-bottom-color: #5b83a2;
+  }
+
+  /* Сводка заявки: кнопка с той же высотой, что и остальные действия. */
+  .desktop-home .desktop-submitted > button { min-height: 48px; font-size: 15px; }
+}
+
+@media (min-width: 900px) and (max-width: 1080px) {
+  .desktop-home .desktop-footer { grid-template-columns: 1fr 1fr; }
+}
+
+/* --- Hero: имя студии, заголовок и подпись в аккуратной колонке --- */
+@media (min-width: 900px) {
+  .desktop-home .desktop-copy .desktop-studioname {
+    margin: 0 0 20px !important;
+    max-width: none !important;
+    color: #dfe7ed !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+  }
+  .desktop-home .desktop-copy h1 { margin-top: 0 !important; }
+  .desktop-home .desktop-copy .desktop-facts { margin-top: 40px; }
+  .desktop-home .desktop-facts dd { font-size: 16px; font-weight: 600; }
+
+  /* Заголовки секций — крупнее и ровнее. */
+  .desktop-home .desktop-section-title h2,
+  .desktop-home .desktop-process h2 {
+    font-size: clamp(34px, 3.4vw, 48px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -.035em !important;
+  }
+  .desktop-home .desktop-local-head h2 { letter-spacing: -.025em !important; }
+}
+
+/* --- Шапка: телефон крупно, вход владельца — тихой ссылкой --- */
+@media (min-width: 900px) {
+  .desktop-home .desktop-header { gap: 28px; }
+  .desktop-home .desktop-header .desktop-brand b { font-size: 20px; letter-spacing: -.02em; }
+  .desktop-home .desktop-header-phone {
+    margin-left: 8px;
+    color: #f0f5f8;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+    transition: border-color .15s ease;
+  }
+  .desktop-home .desktop-header-phone:hover { border-bottom-color: #5b83a2; }
+  .desktop-home .desktop-owner-link {
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: none !important;
+    color: #6f7c88 !important;
+    font-size: 13px !important;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: #3d4a55;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .desktop-home .desktop-owner-link:hover { color: #a8b6c1 !important; }
+
+  /* --- Hero: адрес и часы как настоящие факты, телефон с подписью --- */
+  .desktop-home .desktop-copy .desktop-facts { margin-top: 32px; }
+  .desktop-home .desktop-facts dd span {
+    display: block;
+    margin-top: 3px;
+    color: #98a5b0;
+    font-size: 14px;
+    font-weight: 450;
+  }
+  .desktop-home .desktop-call {
+    display: grid;
+    gap: 3px;
+  }
+  .desktop-home .desktop-call a {
+    color: #f0f5f8;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: -.01em;
+  }
+  .desktop-home .desktop-call a:hover { color: #b6d5eb; }
+  .desktop-home .desktop-call small { color: #7d8a95; font-size: 13px; }
+
+  /* --- Фото: одна честная подпись вместо трёх капсул --- */
+  .desktop-home .desktop-art {
+    display: block !important;
+    margin: 0;
+  }
+  .desktop-home .desktop-art-caption {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 22px;
+    z-index: 8;
+    margin: 0;
+    padding: 10px 14px;
+    border: 1px solid rgba(225, 235, 245, .16);
+    border-radius: 10px;
+    background: rgba(6, 10, 14, .72);
+    color: #c3d0da;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  /* --- Прайс: строка с длительностью и ценой --- */
+  .desktop-home .desktop-services .service-grid article {
+    min-height: 0;
+    gap: 0;
+  }
+  .desktop-home .desktop-services .service-grid article .service-meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid #232a31;
+  }
+  .desktop-home .desktop-services .service-grid article .service-meta span {
+    color: #94a1ac;
+    font-size: 15px;
+  }
+  .desktop-home .desktop-services .service-grid article .service-meta b {
+    color: #eef3f6;
+    font-size: 17px;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .desktop-home .desktop-services .service-grid article > button {
+    margin-top: 16px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid #2c3b47;
+    border-radius: 10px;
+    background: #131a20;
+    color: #cfe2f0;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .desktop-home .desktop-services .service-grid article > button:hover {
+    background: #17222b;
+    border-color: #3d5768;
+  }
+
+  /* --- Процесс: линейка шагов без «01/02/03» --- */
+  .desktop-home .desktop-process .process-grid > li {
+    padding-top: 20px;
+    border-top: 1px solid #2b3a46;
+  }
+  .desktop-home .desktop-process .process-grid > li > b { display: none; }
+  .desktop-home .desktop-process .process-grid > li > strong { margin-top: 0; }
+
+  /* --- FAQ --- */
+  .desktop-home .desktop-faq {
+    width: min(1500px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr);
+    gap: clamp(48px, 7vw, 110px);
+    align-items: start;
+    padding: 40px 0 56px;
+    border-top: 1px solid var(--rule);
+  }
+  .desktop-home .desktop-faq h2 {
+    margin: 0;
+    color: #eef3f6;
+    font-size: clamp(28px, 2.6vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -.03em;
+    font-weight: 650;
+  }
+  .desktop-home .desktop-faq-list { display: grid; gap: 0; }
+  .desktop-home .desktop-faq-item {
+    padding: 18px 0;
+    border-top: 1px solid #212a31;
+  }
+  .desktop-home .desktop-faq-item:first-child { border-top: 0; padding-top: 0; }
+  .desktop-home .desktop-faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: #e6edf2;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+  }
+  .desktop-home .desktop-faq-item summary::-webkit-details-marker { display: none; }
+  .desktop-home .desktop-faq-item summary::after {
+    content: "+";
+    flex: 0 0 auto;
+    color: #7fb0d6;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .desktop-home .desktop-faq-item[open] summary::after { content: "–"; }
+  .desktop-home .desktop-faq-item p {
+    margin: 10px 0 0;
+    max-width: 62ch;
+    color: #9aa6b1;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* --- Футер: телефон крупнее остальных ссылок --- */
+  .desktop-home .desktop-footer-col .desktop-footer-phone {
+    color: #f0f5f8;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1080px) {
+  .desktop-home .desktop-faq { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* --- Основной текст страницы полируется до единого ритма --- */
+@media (min-width: 900px) {
+  .desktop-home { font-size: 16px; }
+  .desktop-home p { text-wrap: pretty; }
+  .desktop-home h1, .desktop-home h2 { text-wrap: balance; }
+}
+

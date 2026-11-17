@@ -1,0 +1,326 @@
+/* ------------------------------------------------------------------
+   Desktop v2: новые блоки публичной страницы, кабинета и формы заявки.
+   Все правила адресуются только desktop-разметке (.desktop-* / .owner-*
+   или media >= 900px), мобильную версию они не затрагивают.
+   ------------------------------------------------------------------ */
+
+@media (min-width: 900px) {
+  /* Первый экран: вместо выдуманных метрик — проверяемые факты о процессе. */
+  .desktop-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    margin: 44px 0 0;
+    padding: 0;
+  }
+  .desktop-facts > div {
+    display: grid;
+    gap: 5px;
+    padding-left: 14px;
+    border-left: 1px solid #25313c;
+  }
+  .desktop-facts dt {
+    color: #75838f;
+    font-size: 11px;
+  }
+  .desktop-facts dd {
+    margin: 0;
+    color: #e4eaef;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* Фото в hero: next/image fill требует relative у контейнера. */
+  .desktop-art { position: relative !important; }
+  .desktop-art > .hero-car-photo { position: absolute !important; inset: 0 !important; }
+
+  /* Прайс: карточки услуг. */
+  .desktop-services .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .desktop-services .service-grid article {
+    display: flex;
+    flex-direction: column;
+    min-height: 232px;
+    padding: 24px;
+    border: 1px solid #232a31;
+    border-radius: 16px;
+    background: #101418;
+  }
+  .desktop-services .service-grid article > i {
+    margin-bottom: 12px;
+    color: #6e9fc4;
+    font-size: 20px;
+    font-style: normal;
+  }
+  .desktop-services .service-grid article > h3 {
+    margin: 0 0 8px;
+    color: #f2f5f7;
+    font-size: 18px;
+    letter-spacing: -.02em;
+  }
+  .desktop-services .service-grid article > p {
+    margin: 0 0 18px;
+    color: #8a949e;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .desktop-services .service-grid article > b {
+    margin-top: auto;
+    color: #e8eef3;
+    font-size: 15px;
+    font-weight: 650;
+  }
+  .desktop-services .service-grid article > button {
+    align-self: flex-start;
+    margin-top: 14px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #7fb0d6;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .desktop-services .service-grid article > button:hover { color: #b6d7ef; }
+  .desktop-empty {
+    max-width: 420px;
+    margin: 0;
+    padding: 22px;
+    border: 1px dashed #2b353d;
+    border-radius: 14px;
+    color: #8a949e;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Процесс — <ol>, поэтому убираем маркеры и сохраняем прежнюю сетку. */
+  .desktop-process > .process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .desktop-process .process-grid > li {
+    min-width: 0;
+    padding-top: 15px;
+    border-top: 2px solid #4f7ea4;
+  }
+  .desktop-process .process-grid > li > b {
+    color: #7fb0d6;
+    font-size: 12px;
+  }
+  .desktop-process .process-grid > li > strong {
+    display: block;
+    margin-top: 30px;
+    color: #eef3f6;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .desktop-process .process-grid > li > p {
+    margin: 8px 0 0;
+    color: #7f8b98;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Преимущества — <ul> без маркеров, чтобы галочка не дублировалась. */
+  .desktop-benefits { margin: 0; padding: 0; list-style: none; }
+
+  /* Сводка последней заявки между hero и прайсом. */
+  .desktop-submitted {
+    width: min(1500px, 100%);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 22px 26px;
+    border: 1px solid #274859;
+    border-radius: 16px;
+    background: #0e1d26;
+  }
+  .desktop-submitted small { color: #7fb0d6; font-size: 11px; }
+  .desktop-submitted h2 {
+    margin: 7px 0 6px;
+    color: #f2f6f8;
+    font-size: 20px;
+    letter-spacing: -.02em;
+  }
+  .desktop-submitted p {
+    margin: 0;
+    max-width: 720px;
+    color: #93a2ad;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .desktop-submitted > button {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid #3d5f78;
+    border-radius: 11px;
+    background: #142632;
+    color: #dfeaf2;
+    font-size: 13px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+  .desktop-submitted > button:hover { background: #19303f; }
+
+  /* Футер: адрес и график больше не склеиваются в одну строку. */
+  .desktop-footer { flex-wrap: wrap; gap: 12px 32px; align-items: center; }
+  .desktop-footer > span:first-child { flex: 1 1 260px; }
+
+  /* Диалог заявки: дата/время в ряд, согласие и подсказка. */
+  .booking-modal .booking-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .booking-modal .booking-row > label { margin-top: 13px; }
+  .modal-backdrop .booking-modal label {
+    display: grid;
+    gap: 7px;
+    margin: 13px 0 0;
+    color: #aeb8c1;
+    font-size: 12px;
+    font-weight: 550;
+  }
+  .modal-backdrop .booking-modal input[type="date"] { color-scheme: dark; }
+  .modal-backdrop .booking-modal label[data-invalid="true"] > input,
+  .modal-backdrop .booking-modal label[data-invalid="true"] > select { border-color: #a0524b; }
+  .modal-backdrop .booking-modal .field-error {
+    color: #e19a94;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+  .modal-backdrop .booking-modal .booking-consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 12px 14px;
+    border: 1px solid #29343d;
+    border-radius: 10px;
+    background: #0d1318;
+    color: #9aa7b1;
+    font-size: 12px;
+    font-weight: 450;
+    line-height: 1.45;
+    cursor: pointer;
+  }
+  .modal-backdrop .booking-modal .booking-consent input {
+    width: 16px !important;
+    height: 16px !important;
+    min-height: 0 !important;
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+    accent-color: #4f9cff;
+  }
+  .modal-backdrop .booking-modal .booking-consent[data-invalid="true"] { border-color: #a0524b; }
+  .modal-backdrop .booking-modal .booking-hint {
+    margin: 12px 0 0;
+    color: #6f7c86;
+    font-size: 11px;
+    line-height: 1.45;
+    text-align: center;
+  }
+  .modal-backdrop .booking-modal .success-screen { text-align: center; }
+  .modal-backdrop .booking-modal .success-screen .check-mark {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 18px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #2f5f49;
+    border-radius: 50%;
+    background: #11241b;
+    color: #8bd5ac;
+    font-size: 20px;
+  }
+  .modal-backdrop .booking-modal .success-screen h2 { margin: 0 0 10px; }
+  .modal-backdrop .booking-modal .success-screen p {
+    margin: 0 auto 22px;
+    max-width: 380px;
+    color: #94a2ac;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .modal-backdrop .booking-modal .primary-button {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #4f9cff;
+    border-radius: 10px;
+    background: #4f9cff;
+    color: #061527;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* Кабинет: бейдж новых заявок, расширенные поля, textarea. */
+  .owner-nav button { position: relative; }
+  .owner-badge {
+    margin-left: auto;
+    min-width: 22px;
+    height: 22px;
+    display: grid;
+    place-items: center;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #2c2518;
+    border: 1px solid #4b3a1d;
+    color: #f1c66f;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .owner-admin textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 11px;
+    border: 1px solid #35414c;
+    border-radius: 8px;
+    outline: 0;
+    resize: vertical;
+    background: #0c1116;
+    color: #eaf0f4;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  .owner-admin textarea:focus { border-color: #6aa7d5; box-shadow: 0 0 0 3px #5295ca25; }
+  .owner-admin label > small {
+    color: #6f7c88;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .owner-page-grid .owner-field-wide { grid-column: 1 / -1; }
+  .owner-edit-form > .owner-notice { margin-bottom: 16px; }
+
+  .owner-service-edit {
+    grid-template-columns: 36px minmax(170px, 1.3fr) minmax(110px, .7fr) minmax(90px, .55fr) minmax(160px, 1.1fr) 36px;
+    margin: 0;
+    padding: 17px 0;
+    border: 0;
+    border-top: 1px solid #252e36;
+    min-width: 0;
+  }
+  .owner-service-edit legend { padding: 0; }
+  .owner-table td:nth-child(3) small {
+    display: block;
+    margin-top: 4px;
+    color: #707e89;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 899px) {
+  /* Мобильная версия эти блоки не использует. */
+  .desktop-facts,
+  .desktop-submitted,
+  .booking-row,
+  .booking-consent,
+  .booking-hint { display: none !important; }
+}

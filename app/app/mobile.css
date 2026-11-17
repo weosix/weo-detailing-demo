@@ -1,0 +1,519 @@
+/* ------------------------------------------------------------------
+   Мобильная версия (<= 899px). Одна колонка, крупные tap-targets,
+   та же информация и тот же функционал, что на desktop.
+
+   Все правила с !important: в globals.css остались старые мобильные
+   стили от прежних итераций (.mobile-only, .cover-card и т.д.).
+   Здесь они не используются — это отдельная, чистая вёрстка.
+   ------------------------------------------------------------------ */
+
+@media (max-width: 899px) {
+  .m-page {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    --m-bg: #05070a;
+    --m-card: #0f1419;
+    --m-line: #202930;
+    --m-text: #eef3f7;
+    --m-muted: #97a3ae;
+    --m-soft: #c2ccd5;
+    --m-accent: #6ba9d6;
+
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--m-bg);
+    color: var(--m-text);
+    font-family: var(--font-primary, Manrope), Manrope, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  /* Всё, что относится к старой мобильной разметке, не должно отображаться. */
+  .mobile-only,
+  .app-frame { display: none !important; }
+
+  /* Активная мобильная страница — единственный интерактивный слой: старые
+     раскладки из globals.css не должны перехватывать касания поверх неё. */
+  .m-page button,
+  .m-page a {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  /* --- Шапка --- */
+  .m-page .m-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 64px;
+    padding: 0 18px;
+    border-bottom: 1px solid var(--m-line);
+    background: rgba(5, 7, 10, 0.92);
+    backdrop-filter: blur(14px);
+  }
+  .m-page .m-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--m-text);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+  }
+  .m-page .m-brand .brand-symbol { flex: 0 0 26px; width: 26px; }
+  .m-page .m-brand .brand-symbol i { width: 26px; height: 4px; background: var(--m-text); }
+  .m-page .m-brand .brand-symbol i:nth-child(2) { width: 19px; margin-left: 3px; }
+  .m-page .m-brand .brand-symbol i:nth-child(3) { width: 13px; margin-left: 7px; }
+  .m-page .m-header-phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid #2c3d4a;
+    border-radius: 10px;
+    color: var(--m-text);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* --- Первый экран --- */
+  .m-page .m-hero {
+    padding: 20px 18px 8px;
+  }
+  .m-page .m-hero-photo {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #0d1419;
+  }
+  .m-page .m-hero-img {
+    object-fit: cover;
+    object-position: center;
+  }
+  .m-page .m-hero h1 {
+    margin: 22px 0 12px;
+    color: var(--m-text);
+    font-size: clamp(38px, 11vw, 46px);
+    font-weight: 620;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+  }
+  .m-page .m-hero > p {
+    margin: 0;
+    color: var(--m-soft);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .m-page .m-facts {
+    display: grid;
+    gap: 14px;
+    margin: 22px 0 0;
+    padding: 18px;
+    border: 1px solid var(--m-line);
+    border-radius: 14px;
+    background: var(--m-card);
+  }
+  .m-page .m-facts dt {
+    color: #7f8c97;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .m-page .m-facts dd {
+    margin: 0;
+    color: var(--m-text);
+    font-size: 16px;
+    font-weight: 550;
+    line-height: 1.45;
+  }
+  .m-page .m-facts dd span {
+    display: block;
+    margin-top: 3px;
+    color: var(--m-muted);
+    font-size: 15px;
+    font-weight: 450;
+  }
+
+  .m-page .m-cta-row {
+    display: grid;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .m-page .m-cta-primary,
+  .m-page .m-cta-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 20px;
+    border-radius: 13px;
+    font-size: 16px;
+    font-weight: 650;
+    text-decoration: none;
+    text-align: center;
+  }
+  .m-page .m-cta-primary {
+    border: 1px solid #4f9cff;
+    background: #4f9cff;
+    color: #061527;
+  }
+  .m-page .m-cta-secondary {
+    border: 1px solid #2c3d4a;
+    background: #111820;
+    color: var(--m-text);
+  }
+
+  /* --- Секции --- */
+  .m-page .m-section {
+    padding: 34px 18px 6px;
+    border-top: 1px solid var(--m-line);
+    margin-top: 26px;
+  }
+  .m-page .m-hero + .m-section { margin-top: 26px; }
+  .m-page .m-section > h2 {
+    margin: 0 0 10px;
+    color: var(--m-text);
+    font-size: clamp(26px, 7.4vw, 32px);
+    font-weight: 620;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .m-page .m-section-note {
+    margin: 0 0 18px;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* --- Услуги --- */
+  .m-page .m-services { display: grid; gap: 12px; }
+  .m-page .m-service {
+    padding: 18px;
+    border: 1px solid var(--m-line);
+    border-radius: 16px;
+    background: var(--m-card);
+  }
+  .m-page .m-service-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .m-page .m-service-head h3 {
+    margin: 0;
+    color: var(--m-text);
+    font-size: 18px;
+    font-weight: 620;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+  .m-page .m-service-head b {
+    flex: 0 0 auto;
+    color: var(--m-text);
+    font-size: 16px;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+  .m-page .m-service > p {
+    margin: 10px 0 0;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .m-page .m-service-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--m-line);
+  }
+  .m-page .m-service-foot span {
+    color: var(--m-muted);
+    font-size: 14px;
+  }
+  .m-page .m-service-foot button {
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid #2c3d4a;
+    border-radius: 11px;
+    background: #142029;
+    color: #cfe2f0;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* --- Шаги --- */
+  .m-page .m-steps {
+    display: grid;
+    gap: 0;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;
+  }
+  .m-page .m-steps li {
+    position: relative;
+    padding: 18px 0 18px 46px;
+    border-top: 1px solid var(--m-line);
+    counter-increment: step;
+  }
+  .m-page .m-steps li:first-child { border-top: 0; padding-top: 4px; }
+  .m-page .m-steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #2e4557;
+    border-radius: 50%;
+    background: #101c25;
+    color: #8cc4e6;
+    font-size: 14px;
+    font-weight: 650;
+  }
+  .m-page .m-steps li:first-child::before { top: 4px; }
+  .m-page .m-steps strong {
+    display: block;
+    color: var(--m-text);
+    font-size: 17px;
+    font-weight: 620;
+    line-height: 1.35;
+  }
+  .m-page .m-steps p {
+    margin: 6px 0 0;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* --- «Цену не меняем на ходу» --- */
+  .m-page .m-proof {
+    padding: 22px 18px;
+    border: 1px solid var(--m-line);
+    border-radius: 16px;
+    background: var(--m-card);
+  }
+  .m-page .m-proof > h2 { font-size: clamp(24px, 6.6vw, 28px); }
+  .m-page .m-proof > p {
+    margin: 8px 0 0;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .m-page .m-proof ul {
+    display: grid;
+    gap: 0;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .m-page .m-proof li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    border-top: 1px solid var(--m-line);
+    color: var(--m-soft);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .m-page .m-proof li:first-child { border-top: 0; padding-top: 0; }
+  .m-page .m-proof li:last-child { padding-bottom: 0; }
+  .m-page .m-proof li span {
+    flex: 0 0 18px;
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    color: var(--m-accent);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  /* --- Моя запись --- */
+  .m-page .m-booking-card {
+    padding: 18px;
+    border: 1px solid #2b4a5e;
+    border-radius: 16px;
+    background: linear-gradient(160deg, #0d1c26, #0b1218);
+  }
+  .m-page .m-booking-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #2f5a75;
+    border-radius: 999px;
+    color: #a8d3ee;
+    font-size: 13px;
+  }
+  .m-page .m-booking-card h3 {
+    margin: 12px 0 6px;
+    color: var(--m-text);
+    font-size: 19px;
+    font-weight: 620;
+  }
+  .m-page .m-booking-card p {
+    margin: 0;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* --- Отзывы --- */
+  .m-page .m-reviews { display: grid; gap: 12px; }
+  .m-page .m-reviews article {
+    padding: 18px;
+    border: 1px solid var(--m-line);
+    border-radius: 16px;
+    background: var(--m-card);
+  }
+  .m-page .m-reviews p {
+    margin: 0 0 14px;
+    color: var(--m-soft);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .m-page .m-reviews footer {
+    display: grid;
+    gap: 3px;
+    padding-top: 12px;
+    border-top: 1px solid var(--m-line);
+  }
+  .m-page .m-reviews footer b { color: var(--m-text); font-size: 15px; font-weight: 620; }
+  .m-page .m-reviews footer small { color: var(--m-muted); font-size: 14px; }
+
+  /* --- FAQ на мобильном --- */
+  .m-page .desktop-faq { padding: 34px 18px 0; margin-top: 26px; border-top: 1px solid var(--m-line); }
+  .m-page .desktop-faq h2 {
+    margin: 0 0 6px;
+    color: var(--m-text);
+    font-size: clamp(26px, 7.4vw, 32px);
+    font-weight: 620;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+  .m-page .desktop-faq-list { display: grid; gap: 0; }
+  .m-page .desktop-faq-item { padding: 16px 0; border-top: 1px solid var(--m-line); }
+  .m-page .desktop-faq-item:first-child { border-top: 0; }
+  .m-page .desktop-faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 28px;
+    color: var(--m-text);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+  }
+  .m-page .desktop-faq-item summary::-webkit-details-marker { display: none; }
+  .m-page .desktop-faq-item summary::after {
+    content: "+";
+    flex: 0 0 auto;
+    color: var(--m-accent);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .m-page .desktop-faq-item[open] summary::after { content: "–"; }
+  .m-page .desktop-faq-item p {
+    margin: 10px 0 0;
+    color: var(--m-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* --- Контакты --- */
+  .m-page .m-contact dl {
+    display: grid;
+    gap: 16px;
+    margin: 6px 0 0;
+    padding: 18px;
+    border: 1px solid var(--m-line);
+    border-radius: 16px;
+    background: var(--m-card);
+  }
+  .m-page .m-contact dt { color: #7f8c97; font-size: 13px; margin-bottom: 4px; }
+  .m-page .m-contact dd {
+    margin: 0;
+    color: var(--m-text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .m-page .m-contact dd span {
+    display: block;
+    margin-top: 3px;
+    color: var(--m-muted);
+    font-size: 15px;
+    font-weight: 450;
+  }
+  .m-page .m-contact-actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  /* --- Подвал --- */
+  .m-page .m-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 34px;
+    padding: 22px 18px calc(28px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--m-line);
+    color: #7f8c97;
+    font-size: 14px;
+  }
+  .m-page .m-owner-link {
+    min-height: 44px;
+    padding: 10px 4px;
+    border: 0;
+    background: none;
+    color: #6f7c88;
+    font-size: 13px;
+    text-decoration: underline;
+    text-decoration-color: #3a464f;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  /* --- Поля формы: на мобильном 16px, чтобы Safari не зумил при фокусе --- */
+  .m-page input,
+  .m-page select,
+  .m-page textarea { font-size: 16px; }
+}
+
+/* Мобильная шапка/панель кабинета остаются как есть до отдельной задачи. */
+
+/* Мобильная разметка рендерится рядом с desktop-версией, поэтому на ПК
+   она должна быть полностью скрыта, иначе её неоформленный поток ломает страницу. */
+@media (min-width: 900px) {
+  .m-page { display: none !important; }
+}
